@@ -279,3 +279,55 @@ class Scraping:
         else:
             print ("Status Code", statusCode)
 
+    def scrapCursos(self):
+
+        url = "https://web.fdi.ucm.es/alumnos/info_grupos.asp?cod=1&fdicurso=2016-2017";
+        # Realizamos la petición a la web
+        req = requests.get(url)
+            
+        # Comprobamos que la petición nos devuelve un Status Code = 200
+        statusCode = req.status_code
+        if statusCode == 200:
+                
+   
+            cursos = dict()
+            # Pasamos el contenido HTML de la web a un objeto BeautifulSoup()
+                
+            #html = BeautifulSoup(req.text)
+               
+
+            html = BeautifulSoup(req.text, "html.parser") 
+
+            #vemos lo que ha optenido
+
+            # Array con las tablas. Cada tabla es de un  grado
+            li = html.find_all('li') 
+
+          
+
+            # Sacamos una matriz con las filas y columnas de las tablas y las metemos en un array de tablas
+           
+                    
+            
+
+           
+                 #matriz.append(p);   
+            key = ''
+            for t, l in enumerate(li):
+
+                p = l.find(text=True);
+                        
+                if ('GRADO' in p ) or ('INFORMÁTICA' in p): 
+
+                    key = p
+                    array = []
+                else:
+                    array.append(p);   
+                    cursos[key] = array;
+                    
+            
+            return cursos;                               
+
+        else:
+            print ("Status Code", statusCode)
+

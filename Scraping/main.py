@@ -12,6 +12,8 @@ def main():
 	
 	scrap = scraping.Scraping()
 
+	dicCursos = scrap.scrapCursos()
+	
 	tabTutorias = scrap.scrapTutorias()
 	
 	tabAsignaturas = scrap.scrapAsignaturas()
@@ -22,6 +24,9 @@ def main():
 	d.insertarScrapingBBDD(tabTutorias);
 
 	d.insertarAsignaturas(tabAsignaturas);
+
+	d.insertarCursos(dicCursos);
+
 
 
 if __name__ == "__main__":

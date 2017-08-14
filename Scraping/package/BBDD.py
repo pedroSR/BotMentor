@@ -51,6 +51,37 @@ class DBHorarios:
         for tupla in cursor.fetchall():
             print (tupla)
 
+    def insertarCursos(self, tablas):
+
+        cursor = self.db.cursor();
+
+        reg = ()
+        
+       
+        cont = 0;
+        for key, value in tablas.items():
+         
+            for v  in value:
+                #req = (id_curso, grado, curso, grupo)
+                
+            
+                if ('Optativas' in v ):
+                    lista = v.split('Optativas')
+                    reg = (cont, key, 0, lista[len(lista)-1])
+        
+                else:
+
+                    lista = v.split('º')
+                   
+                    reg = (cont, key, lista[0], lista[1])
+
+                print(reg)
+                cursor.execute("INSERT INTO Cursos VALUES (?,?,?,?)", reg)
+                cont = cont + 1
+
+                
+        self.db.commit()
+
     def insertarAsignaturas(self, tablas):
 
         cursor = self.db.cursor();

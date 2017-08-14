@@ -5,6 +5,7 @@ import time
 import telepot
 from telepot.loop import MessageLoop
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
+
 def horarios(id, bot):
 	text = 'horarios'
 	keyboard = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Horarios curso', callback_data='hCurso'),InlineKeyboardButton(text='Horarios clase', callback_data='hClase')]])
